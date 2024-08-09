@@ -40,7 +40,7 @@ export default function CpPosts() {
                     <h3>{post.owner}</h3>
                     <img src={post.imageUrl} alt="" className="post-img" />
                     <span id="post-caption">
-                        <p className="post-caption-owner">{post.owner}</p><p className="post-caption-text">{post.caption}</p>
+                        <p className="post-caption-owner">{post.owner}:</p><p className="post-caption-text">{post.caption}</p>
                     </span>
                 </div>
             ))}
