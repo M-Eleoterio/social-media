@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Laravel\Sanctum\PersonalAccessToken;
 
 class UserController extends Controller
 {
@@ -47,4 +48,11 @@ class UserController extends Controller
         return json_encode(['message' => 'Deslogado com sucesso!']);
     }
 
+    function checkAuth(Request $request) {
+        if (PersonalAccessToken::findToken($request->bearerToken())) {
+            return "auth";
+        } else {
+            return "guest";
+        }
+    }
 }

@@ -1,7 +1,10 @@
 import './CpLoginForm.css';
-import axios, {Axios} from 'axios';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function CpLoginForm() {
+
+        const navigate = useNavigate();
     function handleLogin() {
         const baseURL = 'http://localhost:8000/api';
 
@@ -14,7 +17,9 @@ export default function CpLoginForm() {
                 password: password,
             })
             .then(res => {
+                localStorage.setItem('token', res.data.token);
                 console.log(localStorage.getItem('token'));
+                navigate('/');
             })
             .catch(err => {
                 console.log(err);
