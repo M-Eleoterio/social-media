@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './pgHome.css';
 import CpPosts from '../../Components/cpPosts/cpPosts';
+import CpSidebar from '../../Components/cpSidebar/cpSidebar';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -35,7 +36,7 @@ export default function PgHome() {
         return (
 
             <div id="home">
-                <h1>Home</h1>
+                <CpSidebar />
                 <CpPosts />
             </div>
         )
