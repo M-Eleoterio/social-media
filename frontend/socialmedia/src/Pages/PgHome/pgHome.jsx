@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './pgHome.css';
 import CpPosts from '../../Components/cpPosts/cpPosts';
 import CpSidebar from '../../Components/cpSidebar/cpSidebar';
+import CpRecUsers from '../../Components/cpRecUsers/cpRecUsers';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -38,6 +39,7 @@ export default function PgHome() {
             <div id="home">
                 <CpSidebar />
                 <CpPosts />
+                <CpRecUsers />
             </div>
         )
 }

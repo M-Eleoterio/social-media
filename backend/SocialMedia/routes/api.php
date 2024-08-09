@@ -19,3 +19,5 @@ Route::post('/posts', [PostController::class, 'add'])->middleware("auth:sanctum"
 Route::get('/posts/{id}', [PostController::class, 'get']);
 Route::put('/posts/{id}', [PostController::class, 'edit']);
 Route::delete('/posts/{id}', [PostController::class, 'remove']);
+
+Route::get('/users', [UserController::class, 'index'])->middleware('auth:sanctum');

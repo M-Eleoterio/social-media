@@ -55,4 +55,8 @@ class UserController extends Controller
             return "guest";
         }
     }
+
+    function index() {
+        return User::all();
+    }
 }
