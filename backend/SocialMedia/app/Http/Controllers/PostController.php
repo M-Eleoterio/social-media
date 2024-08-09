@@ -9,7 +9,15 @@ class PostController extends Controller
 {
     public function index()
     {
-        return Post::get()->all();
+        $posts = Post::all();
+        foreach ($posts as $post) {
+            $data[] = [
+                "id" => $post->id,
+                "caption"=> $post->caption,
+                "owner" => $post->user->name,
+            ];
+        }
+        return response()->json($data);
     }
 
     public function get($id)
