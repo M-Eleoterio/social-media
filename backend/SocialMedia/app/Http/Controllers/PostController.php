@@ -14,6 +14,7 @@ class PostController extends Controller
             $data[] = [
                 "id" => $post->id,
                 "caption"=> $post->caption,
+                "imageUrl" => $post->imageUrl,
                 "owner" => $post->user->name,
             ];
         }

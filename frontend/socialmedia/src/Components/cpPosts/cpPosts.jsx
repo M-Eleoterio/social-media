@@ -37,8 +37,11 @@ export default function CpPosts() {
         <div id="posts">
             {posts.map(post => (
                 <div className="post">
+                    <h3>{post.owner}</h3>
                     <img src={post.imageUrl} alt="" className="post-img" />
-                    <p id="post-caption">{post.caption}</p>
+                    <span id="post-caption">
+                        <p className="post-caption-owner">{post.owner}</p><p className="post-caption-text">{post.caption}</p>
+                    </span>
                 </div>
             ))}
         </div>
