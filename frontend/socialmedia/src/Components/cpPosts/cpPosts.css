@@ -10,3 +10,7 @@
 .post-img {
     width: 500px;
 }
+
+.post-comment-author {
+    font-weight: 900;
+}
