@@ -18,7 +18,7 @@ export default function CpPosts() {
             })
             .then(res => {
                 setPosts(res.data)
-                console.log(posts);
+                console.log(res.data);
                 setLoading(false);
             })
             .catch(err => {
@@ -35,7 +35,7 @@ export default function CpPosts() {
         <h1>Loading</h1>
     ) : (
         <div id="posts">
-            {posts.map(post => (
+            {posts.map((post, post_id) => (
                 <div className="post">
                     <h3>{post.owner}</h3>
                     <img src={post.imageUrl} alt="" className="post-img" />
@@ -45,9 +45,7 @@ export default function CpPosts() {
                     <div className="post-comments">
                         <h4>Comments</h4>
                         <ul id="post-comments-section">
-                            {post.comments.map(comment => (
-                                <li id="post-comment"><strong>{comment}</strong>{comment.text}</li>
-                            ))}
+                            {post.comments.text}
                         </ul>
                     </div>
                 </div>
