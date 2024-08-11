@@ -16,6 +16,7 @@ class PostController extends Controller
                 "caption"=> $post->caption,
                 "imageUrl" => $post->imageUrl,
                 "owner" => $post->user->name,
+                "comments" => $post->comments
             ];
         }
         return response()->json($data);

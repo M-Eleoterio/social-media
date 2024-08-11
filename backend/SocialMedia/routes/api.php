@@ -14,7 +14,7 @@ Route::post('/register', [UserController::class, 'register']);
 Route::get('/logout', [UserController::class, 'logout'])->middleware("auth:sanctum");
 Route::post('/checkAuth', [UserController::class,'checkAuth']);
 
-Route::get('/posts', [PostController::class, 'index'])->middleware('auth:sanctum');
+Route::get('/posts', [PostController::class, 'index'])/* ->middleware('auth:sanctum') */;
 Route::post('/posts', [PostController::class, 'add'])->middleware("auth:sanctum");
 Route::get('/posts/{id}', [PostController::class, 'get']);
 Route::put('/posts/{id}', [PostController::class, 'edit']);

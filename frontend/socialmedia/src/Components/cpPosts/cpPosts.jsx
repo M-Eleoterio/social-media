@@ -42,6 +42,9 @@ export default function CpPosts() {
                     <span id="post-caption">
                         <p className="post-caption-owner">{post.owner}:</p><p className="post-caption-text">{post.caption}</p>
                     </span>
+                    <div className="post-comments">
+                        <h4>Comments</h4>
+                    </div>
                 </div>
             ))}
         </div>
