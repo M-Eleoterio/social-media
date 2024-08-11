@@ -44,6 +44,11 @@ export default function CpPosts() {
                     </span>
                     <div className="post-comments">
                         <h4>Comments</h4>
+                        <ul id="post-comments-section">
+                            {post.comments.map(comment => (
+                                <li id="post-comment"><strong>{comment}</strong>{comment.text}</li>
+                            ))}
+                        </ul>
                     </div>
                 </div>
             ))}

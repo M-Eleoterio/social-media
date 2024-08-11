@@ -11,13 +11,21 @@ class PostController extends Controller
     {
         $posts = Post::all();
         foreach ($posts as $post) {
-            $data[] = [
-                "id" => $post->id,
-                "caption"=> $post->caption,
-                "imageUrl" => $post->imageUrl,
-                "owner" => $post->user->name,
-                "comments" => $post->comments
-            ];
+            foreach ($post->comments as $comment) {
+                $data[] = [
+                    "id" => $post->id,
+                    "caption" => $post->caption,
+                    "imageUrl" => $post->imageUrl,
+                    "owner" => $post->user->name,
+                    "comments" =>
+                        [
+                            "id" => $comment->id,
+                            "text" => $comment->text,
+                            "user_id" => $comment->user_id,
+                            "user" => \DB::table('users')->where('id', '=', $comment->user_id)->get(),
+                        ]
+                ];
+            }
         }
         return response()->json($data);
     }
@@ -58,15 +66,15 @@ class PostController extends Controller
         ]);
     }
 
-    public function remove($id) 
+    public function remove($id)
     {
-        if (Post::where('id','=',$id)->delete())
+        if (Post::where('id', '=', $id)->delete())
             return response()->json([
                 "message" => "Post deletado."
             ], 200);
-            return response()->json([
-                "message" => "Não foi possível deletar o post."
-            ], 500);
+        return response()->json([
+            "message" => "Não foi possível deletar o post."
+        ], 500);
     }
 
 }
