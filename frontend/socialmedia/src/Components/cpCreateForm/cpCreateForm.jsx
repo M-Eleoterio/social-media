@@ -29,6 +29,7 @@ export default function CpCreateForm() {
         <>
             <div id="create-modal-backshadow">
                 <form id="create-modal" onSubmit={(e) => handleCreatePost(e)}>
+                    <p id="create-modal-close" onClick={() => document.getElementById('create-modal-backshadow').style.display = 'none'}>X</p>
                     <h1>Create new Post</h1>
                     <div>
                         <p className="create-modal-title">Caption</p>

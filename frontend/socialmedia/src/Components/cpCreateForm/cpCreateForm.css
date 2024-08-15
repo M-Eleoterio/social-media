@@ -5,9 +5,9 @@
     position: fixed;
     top: 0;
     left: 0;
-    display: flex;
     justify-content: center;
     align-items: center;
+    display: none;
 }
 
 #create-modal {
@@ -15,6 +15,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
     gap: 10px;
     padding: 40px;
     top: 20px;
@@ -24,4 +25,18 @@
 
 .create-modal-input {
     width: 20em;
+}
+
+#create-modal-close {
+    font-weight: 900;
+    font-size: 30px;
+    position: absolute;
+    top: -20px;
+    right: 25px;
+    color: red;
+    cursor: pointer;
+    user-select: none;
+}
+#create-modal-close:hover {
+    transform: scale(1.1);
 }
