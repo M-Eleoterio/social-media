@@ -48,7 +48,8 @@ class UserController extends Controller
         return json_encode(['message' => 'Deslogado com sucesso!']);
     }
 
-    function checkAuth(Request $request) {
+    function checkAuth(Request $request)
+    {
         if (PersonalAccessToken::findToken($request->bearerToken())) {
             return "auth";
         } else {
@@ -56,7 +57,13 @@ class UserController extends Controller
         }
     }
 
-    function index() {
+    function getUsers()
+    {
         return User::all();
+    }
+
+    function getUser($id)
+    {
+        return User::find($id)->toJson();
     }
 }
