@@ -17,7 +17,7 @@ export default function CpCreateForm() {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }).then(res => {
-            console.log(res.data);
+            document.getElementById('create-modal-backshadow').style.display = 'none'
         }).catch(err => {
             console.log(err);
             
