@@ -3,6 +3,7 @@ import './pgHome.css';
 import CpPosts from '../../Components/cpPosts/cpPosts';
 import CpSidebar from '../../Components/cpSidebar/cpSidebar';
 import CpRecUsers from '../../Components/cpRecUsers/cpRecUsers';
+import CpCreateForm from '../../Components/cpCreateForm/cpCreateForm';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -37,6 +38,7 @@ export default function PgHome() {
 
             <div id="home">
                 <CpSidebar />
+                <CpCreateForm />
                 <CpPosts />
                 <CpRecUsers />
             </div>
