@@ -1,7 +1,6 @@
 import './cpPosts.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 export default function CpPosts() {
     const baseURL = "http://localhost:8000/api";
@@ -50,7 +49,13 @@ export default function CpPosts() {
     }
 
     useEffect(() => {
-        getPosts()
+            getPosts()
+    }, []);
+
+    useEffect(() => {
+        const getPostsInterval = setInterval(() => {
+            getPosts()
+        }, 5000);
     }, []);
 
     return loading ? (

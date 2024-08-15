@@ -9,7 +9,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::all()->reverse();
         foreach ($posts as $post) {
             $comments = $post->comments;
             foreach($comments as $comment) {
@@ -51,7 +51,7 @@ class PostController extends Controller
         $post = Post::create([
             "caption" => $request['caption'],
             "imageUrl" => $request['imageUrl'],
-            "user_id" => auth()->id(),
+            "user_id" => auth('sanctum')->user()->id,
         ]);
         if ($post) {
             return response()->json($post, 201);

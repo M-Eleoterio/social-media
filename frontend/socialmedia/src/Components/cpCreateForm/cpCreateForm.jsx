@@ -9,7 +9,19 @@ export default function CpCreateForm() {
         const imgUrl = `https://via.placeholder.com/640x480.png/${document.getElementById('create-modal-input-color').value.replace('#', '')}?text=${document.getElementById('create-modal-input-img-text').value}`;
         const caption = document.getElementById('create-modal-input-caption').value;
 
-
+        axios.post(`http://localhost:8000/api/posts`, {
+            caption: caption,
+            imageUrl: imgUrl
+        }, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        }).then(res => {
+            console.log(res.data);
+        }).catch(err => {
+            console.log(err);
+            
+        })
         
     }
 
