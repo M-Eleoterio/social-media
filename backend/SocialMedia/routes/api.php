@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -19,5 +20,6 @@ Route::post('/posts', [PostController::class, 'add'])->middleware("auth:sanctum"
 Route::get('/posts/{id}', [PostController::class, 'get']);
 Route::put('/posts/{id}', [PostController::class, 'edit']);
 Route::delete('/posts/{id}', [PostController::class, 'remove']);
+Route::post('/posts/{post_id}/comment', [CommentController::class, 'create']);
 
 Route::get('/users', [UserController::class, 'index'])->middleware('auth:sanctum');
