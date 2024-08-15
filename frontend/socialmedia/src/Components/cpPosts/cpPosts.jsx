@@ -19,7 +19,6 @@ export default function CpPosts() {
             })
             .then(res => {
                 setPosts(res.data)
-                console.log(res.data);
                 setLoading(false);
             })
             .catch(err => {
@@ -31,7 +30,7 @@ export default function CpPosts() {
     function handleCommentPost(e, post_id) {
         e.preventDefault();
         console.log(localStorage.getItem("token"));
-        
+
         if (commentText.trim() == "") {
             alert("Empty comment");
         } else {
@@ -42,17 +41,17 @@ export default function CpPosts() {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
             }).then(res => {
-                console.log(res.data);
+                getPosts();
             }).catch(err => {
                 console.log(err);
-                
+
             })
         }
     }
 
     useEffect(() => {
         getPosts()
-    }, [commentText]);
+    }, []);
 
     return loading ? (
         <h1>Loading</h1>
@@ -67,9 +66,9 @@ export default function CpPosts() {
                     </span>
                     <div className="post-comments">
                         <h4>Comments</h4>
-                        <ul class="post-comments-section">
-                            {post.comments.map(comment => (
-                                <li class="post-comment"><span class="post-comment-author">{comment.author}: </span>{comment.text}</li>
+                        <ul className="post-comments-section">
+                            {post.comments.slice(0, 3).map(comment => (
+                                <li className="post-comment"><span className="post-comment-author">{comment.author}: </span>{comment.text}</li>
                             ))}
                         </ul>
                         <form className="post-comment-input" onSubmit={(e) => handleCommentPost(e, post.id)}>

@@ -24,7 +24,6 @@ export default function PgHome() {
         })
         .then(res => {
             setAuth(res.data);
-            console.log(auth);
         })
         .catch(err => {
             console.log(err); //debug log
