@@ -1,0 +1,47 @@
+#profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#profile-container hr {
+    width: 80%;
+}
+
+#profile-top {
+    display: flex;
+    padding: 50px;
+    gap: 20px;
+    width: 700px;
+    align-items: center;
+}
+#profile-section-icon-img {
+    width: 150px;
+    border-radius: 50%;
+}
+
+#profile-section-info-btns {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#profile-section-info-email {
+    color: rgb(167, 167, 167);
+}
+
+#profile-posts {
+    width: 100%;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+
+}
+.profile-post {
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+}
