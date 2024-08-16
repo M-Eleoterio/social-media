@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 export default function CpProfile() {
     const { id } = useParams();
-    const [user, setUser] = useState();
+    const [user, setUser] = useState([]);
 
     function getProfile() {
         axios.get(`http://localhost:8000/api/users/${id}`, {
