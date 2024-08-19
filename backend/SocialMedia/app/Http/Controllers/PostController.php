@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Types\Model\Comments;
 
 class PostController extends Controller
 {
@@ -35,7 +37,22 @@ class PostController extends Controller
 
     public function get($id)
     {
-        return Post::find($id);
+        foreach (Comment::get() as $comment) {
+            if ($comment->post_id == $id) {
+                $comments[] = [
+                    "author" => User::find($comment->post_id)->value('name'),
+                    "text" => $comment->text
+                ];
+            }
+        }
+
+        $data = [
+            "post" => Post::find($id),
+            "author" => User::find(Post::find($id)->value('user_id'))->value('name'),
+            "comments" => $comments
+        ];
+
+        return $data;
     }
 
     public function edit(Request $request, $id)

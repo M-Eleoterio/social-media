@@ -5,29 +5,50 @@ import { useParams } from 'react-router-dom';
 
 export default function CpPost() {
     const { id } = useParams();
-    const [post, setPost] = useState();
+    const [data, setData] = useState({});
+    const [loading, setLoading] = useState(true);
 
-    function getPost() {
-        axios.get(`http://localhost:8000/api/posts/${id}`, {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('token')}`
-            }
-        })
-            .then(res => {
-                setPost(res.data)
-                console.log(post);
-                
+    async function getPost() {
+        try {
+            const res = await axios.get(`http://localhost:8000/api/posts/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
             })
-            .catch(err => {
-                console.log(err);
-            })
+            setData(res.data);
+            setLoading(false)
+            console.log(data);
+
+        } catch (error) {
+            console.log(error);
+            
+        }
+
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         getPost();
     }, [])
 
+    if (loading) return <h1>Loading</h1>;
     return (
-        <div id="post"></div>
+        <div id="post">
+            {/* {data.post ? (
+                <>
+                    <img src={data.post.imageUrl} alt="Post" id="post-img" />
+                    <h3 id="post-profile">{data.author}</h3>
+                    <ul id="post-comments">
+                        {data.comments?.map((comment) => (
+                            <li key={comment.id} className="post-comment">
+                                <strong>{comment.author}</strong>
+                                {comment.text}
+                            </li>
+                        ))}
+                    </ul>
+                </>
+            ) : (
+                <h1>No data found</h1>
+            )} */}
+        </div>
     );
 }
