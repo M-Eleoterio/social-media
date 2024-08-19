@@ -2,10 +2,14 @@ import { useParams } from 'react-router-dom';
 import './cpProfile.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function CpProfile() {
+    const navigate = useNavigate();
+
     const { id } = useParams();
     const [user, setUser] = useState([]);
+    const [posts, setPosts] = useState([]);
 
     function getProfile() {
         axios.get(`http://localhost:8000/api/users/${id}`, {
@@ -14,8 +18,22 @@ export default function CpProfile() {
             }
         })
             .then(res => {
-                console.log(res.data);
                 setUser(res.data)
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+    function getProfilePosts() {
+        axios.get(`http://localhost:8000/api/users/${id}/posts`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(res => {
+                console.log(res.data);
+                setPosts(res.data)
             })
             .catch(err => {
                 console.log(err);
@@ -24,6 +42,7 @@ export default function CpProfile() {
 
     useEffect(() => {
         getProfile();
+        getProfilePosts();
     }, [])
 
     return (
@@ -46,11 +65,11 @@ export default function CpProfile() {
             </div>
             <hr />
             <div id="profile-posts">
-                <div className="profile-post"></div>
-                <div className="profile-post"></div>
-                <div className="profile-post"></div>
-                <div className="profile-post"></div>
-                <div className="profile-post"></div>
+                {posts.map(post => (
+                    <div className="profile-post" onClick={() => navigate(`/post/${post.id}`)}>
+                        <img src={post.imageUrl} alt="" />
+                    </div>
+                ))}
             </div>
         </div>
     )

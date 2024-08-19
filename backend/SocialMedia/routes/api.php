@@ -24,3 +24,5 @@ Route::post('/posts/{post_id}/comment', [CommentController::class, 'create']);
 
 Route::get('/users', [UserController::class, 'getUsers'])->middleware('auth:sanctum');
 Route::get('/users/{id}', [UserController::class, 'getUser'])->middleware('auth:sanctum');
+Route::get('/users/{id}/posts', [PostController::class, 'getUserPosts'])->middleware('auth:sanctum');
+
