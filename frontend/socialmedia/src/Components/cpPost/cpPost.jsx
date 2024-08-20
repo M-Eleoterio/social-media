@@ -21,7 +21,7 @@ export default function CpPost() {
 
         } catch (error) {
             console.log(error);
-            
+
         }
 
     }
@@ -33,7 +33,7 @@ export default function CpPost() {
     if (loading) return <h1>Loading</h1>;
     return (
         <div id="post">
-            {/* {data.post ? (
+            {data.post ? (
                 <>
                     <img src={data.post.imageUrl} alt="Post" id="post-img" />
                     <h3 id="post-profile">{data.author}</h3>
@@ -48,7 +48,7 @@ export default function CpPost() {
                 </>
             ) : (
                 <h1>No data found</h1>
-            )} */}
+            )}
         </div>
     );
 }

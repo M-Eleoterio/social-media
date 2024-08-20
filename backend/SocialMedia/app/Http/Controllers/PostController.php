@@ -37,22 +37,26 @@ class PostController extends Controller
 
     public function get($id)
     {
-        foreach (Comment::get() as $comment) {
-            if ($comment->post_id == $id) {
+        $comments = [];
+        foreach (Comment::where('post_id', $id)->get() as $comment) {
                 $comments[] = [
-                    "author" => User::find($comment->post_id)->value('name'),
+                    "comment_author" => \DB::table('users')->where('id', $comment->user_id)->value('name'),
+                    "user_id_do_post" => $comment->user_id,
+                    "post_id_do_post" => $comment->post_id,
                     "text" => $comment->text
                 ];
-            }
         }
 
+        $post = Post::find($id);
+
         $data = [
-            "post" => Post::find($id),
-            "author" => User::find(Post::find($id)->value('user_id'))->value('name'),
+            "post" => $post,
+            "author" => User::find($post->user_id)->value('name'),
             "comments" => $comments
         ];
 
         return $data;
+
     }
 
     public function edit(Request $request, $id)
