@@ -1,5 +1,19 @@
 #post {
     border: 1px solid black;
-    width: 55rem;
-    height: 40rem;
+    width: 60rem;
+    display: flex;
+    align-items: center;
+    gap: 20px;    
+    padding: 50px;
+}
+
+#post-comments {
+    height: 400px;
+    width: 300px;
+    overflow-y: scroll;
+    word-wrap: break-word;
+}
+
+#post-profile {
+    cursor: pointer;
 }
