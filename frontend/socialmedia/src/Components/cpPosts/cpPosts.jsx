@@ -1,8 +1,10 @@
 import './cpPosts.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function CpPosts() {
+    const navigate = useNavigate();
     const baseURL = "http://localhost:8000/api";
     const [posts, setPosts] = useState([]);
     const [commentText, setCommentText] = useState("");
@@ -18,6 +20,8 @@ export default function CpPosts() {
             })
             .then(res => {
                 setPosts(res.data)
+                console.log(res.data);
+                
                 setLoading(false);
             })
             .catch(err => {
@@ -64,10 +68,10 @@ export default function CpPosts() {
         <div id="posts">
             {posts.map((post) => (
                 <div className="post">
-                    <h3>{post.owner}</h3>
-                    <img src={post.imageUrl} alt="" className="post-img" />
+                    <h3 className='link' onClick={() => navigate(`/profile/${post.owner_id}`)}>{post.owner}</h3>
+                    <img src={post.imageUrl} alt="" className="post-img link" onClick={() => navigate(`/post/${post.id}`)} />
                     <span id="post-caption">
-                        <p className="post-caption-owner">{post.owner}:</p><p className="post-caption-text">{post.caption}</p>
+                        <p className="post-caption-owner link">{post.owner}:</p><p className="post-caption-text">{post.caption}</p>
                     </span>
                     <div className="post-comments">
                         <h4>Comments</h4>

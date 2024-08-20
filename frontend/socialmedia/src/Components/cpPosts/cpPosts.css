@@ -14,3 +14,7 @@
 .post-comment-author {
     font-weight: 900;
 }
+
+.link {
+    cursor: pointer;
+}

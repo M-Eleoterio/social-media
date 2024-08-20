@@ -29,6 +29,7 @@ class PostController extends Controller
                 "caption" => $post->caption,
                 "imageUrl" => $post->imageUrl,
                 "owner" => $post->user->name,
+                "owner_id" => $post->user->id,
                 "comments" => $post->comments
             ];
         }
@@ -40,7 +41,7 @@ class PostController extends Controller
         $comments = [];
         foreach (Comment::where('post_id', $id)->get() as $comment) {
                 $comments[] = [
-                    "comment_author" => \DB::table('users')->where('id', $comment->user_id)->value('name'),
+                    "author" => \DB::table('users')->where('id', $comment->user_id)->value('name'),
                     "text" => $comment->text
                 ];
         }
