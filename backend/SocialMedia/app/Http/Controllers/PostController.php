@@ -41,8 +41,6 @@ class PostController extends Controller
         foreach (Comment::where('post_id', $id)->get() as $comment) {
                 $comments[] = [
                     "comment_author" => \DB::table('users')->where('id', $comment->user_id)->value('name'),
-                    "user_id_do_post" => $comment->user_id,
-                    "post_id_do_post" => $comment->post_id,
                     "text" => $comment->text
                 ];
         }
