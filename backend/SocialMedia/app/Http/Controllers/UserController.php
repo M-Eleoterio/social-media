@@ -51,9 +51,14 @@ class UserController extends Controller
     function checkAuth(Request $request)
     {
         if (PersonalAccessToken::findToken($request->bearerToken())) {
-            return "auth";
+            return json_encode([
+                "user" => "auth",
+                "id" => auth('sanctum')->id()
+            ]);
         } else {
-            return "guest";
+            return json_encode([
+                "user" => "guest",
+            ]);;
         }
     }
 
