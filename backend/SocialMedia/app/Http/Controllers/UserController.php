@@ -28,7 +28,7 @@ class UserController extends Controller
     function register(Request $request)
     {
         $userData = $request->validate([
-            "name" => "string|min:5",
+            "name" => "string|min:3",
             "email" => "email|required|string",
             "password" => "required|string",
         ]);

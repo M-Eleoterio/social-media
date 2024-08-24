@@ -1,0 +1,50 @@
+#register-form {
+    border: 1px solid rgba(128, 128, 128, 0.411);
+    padding: 60px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    width: 250px;
+}
+
+.register-form-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    text-align: left;
+}
+
+.register-form-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid gray;
+    background-color: rgb(236, 236, 236);
+    outline: none;
+}
+.register-form-input:focus {
+    border: 1px solid rgb(65, 65, 65);
+}
+
+#register-form-input-btn {
+    width: 100%;
+    background-color: rgb(67, 155, 255);
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 6px;
+}
+
+#register-form-error {
+    background-color: red;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    border-radius: 4px;
+    color: white;
+    font-size: 15px;
+    display: none;
+}
